@@ -1,0 +1,54 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="休息提醒" Width="380" SizeToContent="Height"
+        WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True"
+        Background="Transparent" ShowActivated="False" ShowInTaskbar="False"
+        Topmost="True" WindowStartupLocation="Manual" FontFamily="Microsoft YaHei UI">
+  <Border Margin="12" Padding="22" CornerRadius="16" Background="#FFFFFF"
+          BorderBrush="#D9E7E2" BorderThickness="1">
+    <Border.Effect>
+      <DropShadowEffect Color="#20332E" BlurRadius="18" ShadowDepth="3" Opacity="0.16"/>
+    </Border.Effect>
+    <StackPanel>
+      <StackPanel Orientation="Horizontal" Margin="0,0,0,14">
+        <Border Width="36" Height="36" CornerRadius="12" Background="#EAF5F1" Margin="0,0,12,0">
+          <Viewbox Width="22" Height="22">
+            <Canvas Width="24" Height="24">
+              <Path Stroke="#2F7567" StrokeThickness="1.7" StrokeStartLineCap="Round"
+                    StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                    Data="M5,8 L16,8 L16,16 Q16,20 12,20 L9,20 Q5,20 5,16 Z M16,9 L18,9 Q22,9 22,12 Q22,15 18,15 L16,15 M8,5 L8,2 M12,5 L12,2"/>
+            </Canvas>
+          </Viewbox>
+        </Border>
+        <TextBlock Text="歇一小会儿" FontSize="18" FontWeight="SemiBold"
+                   Foreground="#20332E" VerticalAlignment="Center"/>
+      </StackPanel>
+      <TextBlock x:Name="Message" Text="忙了一阵了，起来走走、接杯水吧。"
+                 FontSize="14" LineHeight="23" TextWrapping="Wrap" Foreground="#52675F"/>
+      <Button x:Name="Dismiss" Content="知道了" Width="88" Height="34"
+              Margin="0,18,0,0" HorizontalAlignment="Right" FontSize="13"
+              Foreground="White" Background="#2F7567" BorderBrush="#2F7567"
+              BorderThickness="2" Cursor="Hand" AutomationProperties.Name="知道了，关闭休息提醒">
+        <Button.Template>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="ButtonBorder" CornerRadius="8" Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="ButtonBorder" Property="Background" Value="#245D52"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="ButtonBorder" Property="Background" Value="#1D4D44"/>
+              </Trigger>
+              <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#122D27"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Button.Template>
+      </Button>
+    </StackPanel>
+  </Border>
+</Window>

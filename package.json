@@ -1,0 +1,34 @@
+{
+  "name": "@local/dsh-break-reminder",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "A gentle Windows desktop break reminder for DeepSeek Harness, with a configurable interval and quiet, dismissible cards.",
+  "keywords": ["dsh-plugin", "deepseek-harness", "break-reminder", "windows", "powershell", "wpf"],
+  "homepage": "https://github.com/fxy0715/dsh-break-reminder#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fxy0715/dsh-break-reminder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fxy0715/dsh-break-reminder/issues"
+  },
+  "scripts": {
+    "check": "node --check index.js && node --check client.js"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": ["index.js", "client.js", "reminder.ps1", "ReminderClock.cs", "reminder.xaml", "cordis.patch.yml", "locale/*.json", "icon.svg", "docs/reminder-example.png"],
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-conversation", "@deepseek-ai/dsh-client-connection"]
+    }
+  }
+}
